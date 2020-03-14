@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// 認証用のルーティングを追加
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// 認証を必要とするpath
+Route::middleware('auth')->group(function () {
+    Route::get('/home', 'HomeController@index')->name('home');
+});
