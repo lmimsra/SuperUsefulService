@@ -11,14 +11,19 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-// 認証用のルーティングを追加
+// 認証用のルーティング
 Auth::routes();
 
 // 認証を必要とするpath
-Route::middleware('auth')->group(function () {
-    Route::get('/home', 'HomeController@index')->name('home');
-});
+//Route::middleware('auth')->group(function () {
+//    Route::get('/home', 'HomeController@index')->name('home');
+//});
+
+// トップページ用のルーティング
+Route::get('/', 'HomeController@index');
+
+// スレッド関連
+Route::resource('/threads', 'ThreadController');
+
+// ポスト関連
+Route::resource('/post', 'PostController');
