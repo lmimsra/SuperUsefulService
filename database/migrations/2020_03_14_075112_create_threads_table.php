@@ -14,7 +14,7 @@ class CreateThreadsTable extends Migration
     public function up()
     {
         Schema::create('threads', function (Blueprint $table) {
-            $table->unsignedBigInteger('id')->autoIncrement()->primary();
+            $table->unsignedBigInteger('id')->autoIncrement();
             $table->string('title')->comment('スレのタイトル名');
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
