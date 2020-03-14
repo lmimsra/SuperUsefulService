@@ -36,6 +36,6 @@ class PostController extends BaseController
 
         Post::create($data);
 
-        return redirect()->to('/thread/' . $data['thread_id']);
+        return redirect()->to('/threads/' . $data['thread_id']);
     }
 }

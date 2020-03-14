@@ -12,13 +12,18 @@
     </form>
 
     <h1>スレッド一覧</h1>
-    @foreach ($threads as $thread)
-        <div>
-            <a href="{{ url('threads/'.$thread->id) }}">
-                {{ $thread->title }}
-                ({{ count($thread->post_list) }})
-                {{ $thread->updated_at->format('Y/m/d H:i:s') }}
-            </a>
-        </div>
-    @endforeach
+    {{--  スレッドがあれば表示--}}
+    @if(isset($threads))
+        @foreach ($threads as $thread)
+            <div>
+                <a href="{{ url('threads/'.$thread->id) }}">
+                    {{ $thread->title }}
+                    ({{ count($thread->getPostList) }})
+                    {{ $thread->updated_at->format('Y/m/d H:i:s') }}
+                </a>
+            </div>
+        @endforeach
+    @else
+        <h2>まだスレッドはありません！</h2>
+    @endif
 @endsection

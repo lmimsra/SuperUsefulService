@@ -14,13 +14,14 @@ class ThreadController extends BaseController
 {
     /**
      * スレッドの一覧取得
-     * @todo 後でページングできるようにしたい
      * @return Factory|View
+     * @todo 後でページングできるようにしたい
      */
     public function index()
     {
         $threads = Thread::orderBy('updated_at', 'desc')->get();
-        return view('threads', compact($threads));
+//        print_r($threads);
+        return view('thread')->with(['threads' => $threads]);
     }
 
     /**
@@ -31,7 +32,7 @@ class ThreadController extends BaseController
     public function show(int $id)
     {
         $thread = Thread::findOrFail($id);
-        return view('posts', compact('thread'));
+        return view('post', compact('thread'));
     }
 
     /**

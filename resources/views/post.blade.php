@@ -20,11 +20,15 @@
     </form>
 
     {{-- 投稿一覧 --}}
-    @foreach ($thread->post_list as $post)
+    @if(isset($thread))
+    @foreach ($thread->getPostList as $post)
         {{ $post->created_at->format('Y/m/d H:i:s') }}（{{ $post->name }}）
         <div>
             {{-- HTMLタグ無効化してから、改行を<br>変換  --}}
             {!! nl2br(htmlspecialchars($post->content)) !!}
         </div>
     @endforeach
+    @else
+        <h3>コメントはまだありません！</h3>
+    @endif
 @endsection

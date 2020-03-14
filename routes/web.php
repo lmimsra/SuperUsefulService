@@ -26,4 +26,4 @@ Route::get('/', 'HomeController@index');
 Route::resource('/threads', 'ThreadController');
 
 // ポスト関連
-Route::resource('/post', 'PostController');
+Route::resource('/posts', 'PostController');
