@@ -23,6 +23,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        // アクセスがhttpsの時の混在コンテンツ対策
+        if (request()->isSecure()) {
+            \URL::forceScheme('https');
+        }
     }
 }
